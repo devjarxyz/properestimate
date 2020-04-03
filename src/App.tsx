@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-//hey
-=======
 import React, { useEffect } from 'react';
->>>>>>> develop
 import './App.css';
 import { connect } from 'react-redux';
 import { getStatisticsRequest } from './data/covid19/actions';
