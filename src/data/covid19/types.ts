@@ -1,20 +1,20 @@
-export const baseType = 'covid19';
-
-export const GET_STATISTICS_REQUEST = `${baseType}/get_statistics_request`;
-export const GET_STATISTICS_SUCCESS = `${baseType}/get_statistics_success`
-export const GET_STATISTICS_ERROR = `${baseType}/get_statistics_error`;
+export enum StatisticsTypes{
+    GET_STATISTICS_REQUEST = `covid19/get_statistics_request`,
+    GET_STATISTICS_SUCCESS = `covid19/get_statistics_success`,
+    GET_STATISTICS_ERROR = `covid19/get_statistics_error`
+}
 
 export interface GetStatisticsRequestAction {
-    type: typeof GET_STATISTICS_REQUEST
+    type: StatisticsTypes.GET_STATISTICS_REQUEST
 };
 
 export interface GetStatisticsSuccesAction {
-    type: typeof GET_STATISTICS_SUCCESS,
+    type: StatisticsTypes.GET_STATISTICS_SUCCESS,
     payload: CovidInformation[]
 };
 
 export interface GetStatisticsErrorAction {
-    type: typeof GET_STATISTICS_ERROR,
+    type: StatisticsTypes.GET_STATISTICS_ERROR,
     error: any
 };
 
@@ -37,3 +37,7 @@ export interface CovidInformation {
 }
 
 export type CovidTypes = GetStatisticsRequestAction | GetStatisticsSuccesAction | GetStatisticsErrorAction;
+
+export const GetCovidType = <T extends CovidTypes>(element: GetStatisticsRequestAction | GetStatisticsSuccesAction | GetStatisticsErrorAction, type: StatisticsTypes): element is T =>{
+    return element.type !== undefined && element.type === type;
+}
