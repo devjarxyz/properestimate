@@ -1,5 +1,5 @@
 import { CovidTypes, CovidInformation,
-        StatisticsTypes } from './types';
+        Covid19RSETypes } from './types';
 
 import {  } from './actions';
 
@@ -11,7 +11,7 @@ const INITIAL_STATE: covid19State = {
 
 const statisticsReducer = (state = INITIAL_STATE, action: CovidTypes): covid19State => {
     switch(action.type){
-        case StatisticsTypes.GET_STATISTICS_SUCCESS: {
+        case Covid19RSETypes.GET_STATISTICS_SUCCESS: {
             let items = action.payload;
             return {
                 items,
@@ -19,13 +19,13 @@ const statisticsReducer = (state = INITIAL_STATE, action: CovidTypes): covid19St
 
             }
         }
-        case StatisticsTypes.GET_STATISTICS_REQUEST: {
+        case Covid19RSETypes.GET_STATISTICS_REQUEST: {
             return {
                 items: INITIAL_STATE.items,
                 loading: true
             }
         }
-        case StatisticsTypes.GET_STATISTICS_ERROR: {
+        case Covid19RSETypes.GET_STATISTICS_ERROR: {
             return {
                 items: INITIAL_STATE.items,
                 loading: false,
