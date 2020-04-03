@@ -1,8 +1,15 @@
-import React from 'react';
-//hey
+import React, { useEffect } from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import { getStatisticsRequest } from './data/covid19/actions';
 
-function App() {
+
+function App(props: any) {
+  useEffect(() => {
+    
+    props.getStatisticsRequest();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <div className="App">
       
@@ -10,4 +17,6 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, {
+  getStatisticsRequest
+})(App);
