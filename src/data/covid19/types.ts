@@ -12,7 +12,9 @@ export interface GetStatisticsRequestAction {
 
 export interface GetStatisticsSuccesAction {
     type: Covid19RSETypes.GET_STATISTICS_SUCCESS,
-    payload: CovidInformation[]
+    payload: {
+        items: CovidInformation[]
+    }
 };
 
 export interface GetStatisticsErrorAction {
@@ -41,6 +43,7 @@ export interface CovidInformation {
 export type CovidTypes = GetStatisticsRequestAction | GetStatisticsSuccesAction | GetStatisticsErrorAction;
 
 ///if you had a more generic check and wanted to compare what type it is, this is the way to go (read up on type-guards on typescript doc). Booya. 
+///works well with element of type any, simply wanted to be explicit as a showcase 
 export const GetCovidType = <T extends CovidTypes>(element: GetStatisticsRequestAction | GetStatisticsSuccesAction | GetStatisticsErrorAction, type: Covid19RSETypes): element is T =>{
     return element.type !== undefined && element.type === type;
 }

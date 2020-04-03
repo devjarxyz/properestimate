@@ -12,7 +12,8 @@ const INITIAL_STATE: covid19State = {
 const statisticsReducer = (state = INITIAL_STATE, action: CovidTypes): covid19State => {
     switch(action.type){
         case Covid19RSETypes.GET_STATISTICS_SUCCESS: {
-            let items = action.payload;
+            let {items} = action.payload;
+            console.log(items);
             return {
                 items,
                 loading: false

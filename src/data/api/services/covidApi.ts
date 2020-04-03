@@ -8,11 +8,11 @@ const rapidHost = 'covid-193.p.rapidapi.com';
 
 export const covidApi = {
 
-    getStatistics: async () => {
+    getStatistics: (): Promise<CovidInformation[]> => {
        
         let url = `${covidBase}${covidDataNames.statistics}`;
 
-        let result = await axios.get(url, {
+        let result = axios.get(url, {
             headers: {
                 "x-rapidapi-host": rapidHost,
                 "x-rapidapi-key": rapidKey,

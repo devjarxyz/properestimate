@@ -9,7 +9,7 @@ interface AppProps {
 
 function App(props: AppProps) {
   useEffect(() => {
-    console.log(props);
+    console.log('useffect');
     props.getStatisticsRequest();
     //without a parameter you it will be only called once, equivalent to componentDidMount, also will need lint turned off since it's being a dick. Also use several useEffect where needed 
     //eslint-disable-next-line react-hooks/exhaustive-deps
