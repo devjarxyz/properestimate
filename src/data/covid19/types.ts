@@ -1,3 +1,5 @@
+
+//in typescript, enums are easier to check
 export enum Covid19RSETypes{
     GET_STATISTICS_REQUEST = `covid19/get_statistics_request`,
     GET_STATISTICS_SUCCESS = `covid19/get_statistics_success`,
@@ -38,6 +40,7 @@ export interface CovidInformation {
 
 export type CovidTypes = GetStatisticsRequestAction | GetStatisticsSuccesAction | GetStatisticsErrorAction;
 
+///if you had a more generic check and wanted to compare what type it is, this is the way to go (read up on type-guards on typescript doc). Booya. 
 export const GetCovidType = <T extends CovidTypes>(element: GetStatisticsRequestAction | GetStatisticsSuccesAction | GetStatisticsErrorAction, type: Covid19RSETypes): element is T =>{
     return element.type !== undefined && element.type === type;
 }
