@@ -1,18 +1,18 @@
-import { StatisticsTypes } from "./types";
+import { Covid19RSETypes } from "./types";
 
 export const getStatisticsRequest = () => ({
-    type: StatisticsTypes.GET_STATISTICS_REQUEST
+    type: Covid19RSETypes.GET_STATISTICS_REQUEST
 });
 
 export const getStatisticsSuccess = ({items}: any) => ({
-    type: StatisticsTypes.GET_STATISTICS_SUCCESS,
+    type: Covid19RSETypes.GET_STATISTICS_SUCCESS,
     payload: {
         items
     }
 });
 
 export const getStatisticsError = ({error}: any) => ({
-    type: StatisticsTypes.GET_STATISTICS_ERROR,
+    type: Covid19RSETypes.GET_STATISTICS_ERROR,
     error
 });
 
