@@ -1,25 +1,30 @@
 
-import { covidDataNames, covidBase } from '../base';
+import { covidDataNames, covidPomberBase } from '../base';
 import axios, { AxiosError } from 'axios';
-import { CovidInformation } from '../../covid19/types';
+import { CovidInformation, CountryInformation } from '../../covid19/types';
 
-const rapidKey = '8a0aed8675msh5131f81d254299bp1621bbjsne16df19e24a1';
-const rapidHost = 'covid-193.p.rapidapi.com';
+// const rapidKey = '8a0aed8675msh5131f81d254299bp1621bbjsne16df19e24a1';
+// const rapidHost = 'covid-193.p.rapidapi.com';
 
 export const covidApi = {
 
     getStatistics: (): Promise<CovidInformation[]> => {
        
-        let url = `${covidBase}${covidDataNames.statistics}`;
+        let url = `${covidPomberBase}${covidDataNames.pomberstatistics}`;
 
-        let result = axios.get(url, {
-            headers: {
-                "x-rapidapi-host": rapidHost,
-                "x-rapidapi-key": rapidKey,
-                
-            }
-        }).then((response: any) => {
-            return response.data.response as CovidInformation[];
+        let result = axios.get(url).then((response: any) => {
+            let res: CovidInformation[] = [];
+            let result = Object.entries(response.data);
+            result.forEach(([key, value]) => {
+                let country: CovidInformation = {
+                    country: key.toString(),
+                    data: value as CountryInformation[]
+                };
+                res.push(country);
+            });
+            console.log(res);
+           
+            return res;
             
         }).catch((error: AxiosError) => {
             console.log(error);

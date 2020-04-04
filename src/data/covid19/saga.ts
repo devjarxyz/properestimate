@@ -6,7 +6,6 @@ import { CovidInformation, Covid19RSETypes } from './types';
 function* getStatistics() {
     try {
         const result: CovidInformation[] = yield call(covidApi.getStatistics);
-        
         yield put(actions.getStatisticsSuccess({items: result}));
         
     } catch (error) {
